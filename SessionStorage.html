@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Session Storage</title>
+
+    </head>
+    <body>
+        <h2>Session Storage</h2>
+        <input type="text" id="userInput" placeholder="Enter Name "><br><br>
+        <input type="pwd" id="userPwd" placeholder="Enter password "><br><br>
+        <input type="number" id="userAge" placeholder="Enter Age "><br><br>
+        <button onclick="saveData()" >Save Data </button><br><br>
+        <button onclick="getData()" >Get Data </button><br><br>
+
+        <p id="result">Result :</p>
+    <script>
+    // Save  Data
+        function saveData(){
+            const name = document.getElementById("userInput").value;
+            const pwd = document.getElementById("userPwd").value;
+            const age = document.getElementById("userAge").value;
+
+            sessionStorage.setItem("username",name);
+            sessionStorage.setItem("password",pwd);
+            sessionStorage.setItem("age",age);
+            document.getElementById("result").textContent = `Data => Name : ${name}, Age : ${age}`;
+
+        }
+    // Retrieve data
+        function getData(){
+           const storedName= sessionStorage.getItem("username");
+            if(storedName){
+                document.getElementById("result").textContent = "Retrived Data :" + storedName;
+            }
+            else{
+                document.getElementById("result").textContent = "Data Not Found";
+            }
+        }
+    </script>
+    </body>
+</html>

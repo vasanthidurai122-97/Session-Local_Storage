@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Local Storage</title>
+
+    </head>
+    <body>
+        <h2>Local Storage</h2>
+        <input type="text" id="userInput" placeholder="Enter UserID "><br><br>
+        <input type="email" id="userEmail" placeholder="Enter Email"><br><br>
+        <button onclick="saveData()" >Save Data </button><br><br>
+        <button onclick="getData()" >Get Data </button><br><br>
+        <button onclick="removeData()">Remove Data</button><br><br>
+        <button onclick="ClearAll()" >clear </button><br><br>
+        <p id="result">Result :</p>
+    <script>
+    // Save  Data
+        function saveData(){
+            const uid = document.getElementById("userInput").value;
+            const mail = document.getElementById("userEmail").value;
+            localStorage.setItem("user",uid);
+            localStorage.setItem("mail",mail);
+            alert("Data Saved in Session Storage");
+            document.getElementById("result").textContent = `Data => ID : ${uid}, mail : ${mail}`;
+        }
+    // Retrieve data
+        function getData(){
+           const storedName= localStorage.getItem("user");
+            if(storedName){
+                document.getElementById("result").textContent = "Retrived Data :" + storedName;
+            }
+            else{
+                document.getElementById("result").textContent = "Data Not Found";
+            }
+        }
+    // Remove Data
+        function removeData(){
+            localStorage.removeItem("mail");
+            alert("Data Removed");
+        }
+    // Clear All
+       function ClearAll(){
+           localStorage.clear();
+           alert("Clear A LocalStorage");
+       }
+    </script>
+    </body>
+</html>
